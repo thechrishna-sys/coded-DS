@@ -1,0 +1,17 @@
+# Design System
+
+A Figma-to-code design system with an interactive showcase website for vibe coding designers.
+
+## Packages
+- tokens: Design tokens (colors, spacing, typography) extracted from Figma
+- components: React component library built on top of tokens
+- icons: SVG icon library as React components
+
+## App
+- docs: Interactive website showcasing all components with live previews and code snippets
+
+## Key conventions
+- Import components from packages/components
+- Import tokens from packages/tokens/dist
+- Never use hardcoded values — always use tokens
+- Component structure: primitives (atoms) → patterns (composed components)

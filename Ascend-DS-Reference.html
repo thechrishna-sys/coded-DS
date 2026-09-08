@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascend Design System 2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+<style>
+/* ── DS TOKENS ──────────────────────────────────────────────────────── */
+:root {
+  --color-primary-100: #007680; --color-primary-200: #1E5C5F;
+  --color-secondary-100: #C4D600; --color-secondary-200: #9DD4CF;
+  --color-secondary-300: #4DC5B4; --color-secondary-400: #009A44;
+  --color-secondary-500: #046A38;
+  --color-brand-100: #F4F9F9; --color-brand-200: #EAF2F3;
+  --color-brand-300: #E2EEEF; --color-brand-400: #C8E1E4;
+  --color-brand-500: #63B7B7; --color-brand-600: #004F59;
+  --color-neutral-0: #FFFFFF; --color-neutral-100: #F9F9F9;
+  --color-neutral-200: #F1F1F1; --color-neutral-300: #EBEAEA;
+  --color-neutral-400: #BDBDBD; --color-neutral-500: #8F8F8F;
+  --color-neutral-600: #747474; --color-neutral-700: #5E5E5E;
+  --color-neutral-800: #3D3D3D; --color-neutral-900: #282828;
+  --color-cool-neutral-100: #F7F8F8; --color-cool-neutral-200: #F8FAFA;
+  --color-cool-neutral-300: #F3F6F6; --color-cool-neutral-400: #EFF3F3;
+  --color-cool-neutral-500: #EAEEEE; --color-cool-neutral-600: #DFE7E8;
+  --color-cool-neutral-700: #D7E0E0; --color-cool-neutral-800: #B7C6C8;
+  --color-error-100: #FFF4F3; --color-error-200: #F6EBEB;
+  --color-error-300: #F2B8B5; --color-error-400: #DA291C;
+  --color-error-500: #B71C13;
+  --color-success-100: #EFFBF2; --color-success-200: #DFF3E3;
+  --color-success-300: #C9E4CF; --color-success-400: #009A44;
+  --color-success-500: #1D7E33;
+  --color-warning-100: #FFF7EC; --color-warning-200: #F8E8CC;
+  --color-warning-300: #FFCD00; --color-warning-400: #936414;
+  --color-information-100: #EFF3FC; --color-information-200: #DEE5F6;
+  --color-information-300: #325FF1; --color-information-400: #054EB3;
+  --color-magenta-100: #FBF9FB; --color-magenta-200: #F0E9EE;
+  --color-magenta-300: #EDDDE7; --color-magenta-400: #C871AE;
+  --color-magenta-500: #C03A97;
+  --color-orange-100: #FDFBF7; --color-orange-200: #F7F5F1;
+  --color-orange-300: #F5E2CE; --color-orange-400: #FBB160;
+  --color-orange-500: #FD8503;
+  --color-indigo-100: #F3F5F9; --color-indigo-200: #B3C5E5;
+  --color-indigo-300: #B2BBC8; --color-indigo-400: #85A8E4;
+  --color-indigo-500: #4672BE; --color-indigo-600: #5A6C93;
+  --color-turquoise-100: #F7FAFA; --color-turquoise-200: #D7EEEE;
+  --color-turquoise-300: #C3D9DB; --color-turquoise-400: #80BABF;
+  --color-turquoise-500: #00ABAB; --color-turquoise-600: #22747B;
+  --color-turquoise-700: #0A4448;
+  --color-voilet-100: #FCFAFF; --color-voilet-200: #F1ECFE;
+  --color-voilet-300: #E5DCFF; --color-voilet-400: #A289E5;
+  --color-voilet-500: #9E7BE3; --color-voilet-600: #734ED8;
+  --color-blue-100: #F5F9FC; --color-blue-200: #CFE2EF;
+  --color-blue-300: #9DD2ED; --color-blue-400: #3EB9EB; --color-blue-500: #05A5E6;
+  --color-rewards-100: #FBFAF7; --color-rewards-200: #F6E6B2;
+  --color-rewards-300: #FBBE22; --color-rewards-400: #E86301;
+  --color-rewards-500: #CB6D07; --color-rewards-600: #69492D;
+  --color-light-green-700: #86BC25; --color-light-green-600: #B2CA86;
+  --icon-primary: #282828; --icon-secondary: #3D3D3D;
+  --icon-tertiary: #5E5E5E; --icon-disabled: #747474; --icon-hint: #8F8F8F;
+  --icon-action-default: #007680; --icon-action-active: #1E5C5F;
+  --icon-state-error: #DA291C; --icon-state-success: #1D7E33;
+  --icon-state-warning: #936414; --icon-state-information: #325FF1;
+  --icon-ai: #C03A97;
+  --text-primary: #282828; --text-secondary: #3D3D3D;
+  --text-tertiary: #5E5E5E; --text-disabled: #747474; --text-hint: #8F8F8F;
+  --text-action-default: #007680;
+  --text-state-error: #DA291C; --text-state-success: #1D7E33;
+  --text-state-warning: #936414; --text-state-information: #325FF1;
+  --surface-fill-neutral-0: #FFFFFF; --surface-fill-neutral-100: #F9F9F9;
+  --surface-fill-neutral-200: #F1F1F1; --surface-fill-neutral-900: #282828;
+  --surface-fill-cool-neutral-100: #F7F8F8;
+  --surface-fill-cool-neutral-200: #F8FAFA;
+  --surface-fill-cool-neutral-300: #F3F6F6;
+  --surface-fill-cool-neutral-400: #EFF3F3;
+  --surface-fill-cool-neutral-500: #EAEEEE;
+  --surface-fill-cool-neutral-600: #DFE7E8;
+  --surface-fill-primary-100: #007680;
+  --bg-fill-section: #F3F6F6; --bg-fill-navigation: #EAEEEE;
+  --corner-radius-0: 0px; --corner-radius-2: 2px; --corner-radius-4: 4px;
+  --corner-radius-8: 8px; --corner-radius-12: 12px; --corner-radius-16: 16px;
+  --corner-radius-20: 20px; --corner-radius-24: 24px; --corner-radius-40: 40px;
+  --corner-radius-60: 60px; --corner-radius-100: 100px;
+  --font-family: "Open Sans", sans-serif;
+  --font-size-d1: 36px; --line-height-d1: 44px;
+  --font-size-d2: 32px; --line-height-d2: 40px;
+  --font-size-h1: 28px; --line-height-h1: 40px;
+  --font-size-h2: 24px; --line-height-h2: 32px;
+  --font-size-h3: 20px; --line-height-h3: 28px;
+  --font-size-h4: 18px; --line-height-h4: 26px;
+  --font-size-bl: 16px; --line-height-bl: 24px;
+  --font-size-br: 14px; --line-height-br: 24px;
+  --font-size-bs: 12px; --line-height-bs: 20px;
+  --font-size-bxs: 10px; --line-height-bxs: 18px;
+  --spacing-space-4: 4px; --spacing-space-8: 8px; --spacing-space-12: 12px;
+  --spacing-space-16: 16px; --spacing-space-20: 20px; --spacing-space-24: 24px;
+  --spacing-space-32: 32px; --spacing-space-40: 40px; --spacing-space-48: 48px;
+  --spacing-space-56: 56px; --spacing-space-64: 64px; --spacing-space-80: 80px;
+}
+
+/* ── RESET & BASE ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--surface-fill-cool-neutral-100);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────────────────────── */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: 240px; height: 100vh;
+  background: var(--surface-fill-neutral-0);
+  border-right: 1px solid var(--surface-fill-cool-neutral-500);
+  display: flex; flex-direction: column; overflow-y: auto; z-index: 100;
+}
+.sidebar-brand {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--surface-fill-cool-neutral-500);
+  text-decoration: none;
+}
+.sidebar-brand-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-primary); margin-bottom: 2px;
+}
+.sidebar-brand-title {
+  font-size: 16px; font-weight: 700; color: var(--color-primary-100);
+}
+.sidebar-nav { padding: 16px 0; flex: 1; }
+.sidebar-section-label {
+  padding: 8px 20px 4px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-tertiary);
+}
+.sidebar-nav a {
+  display: block; padding: 8px 20px;
+  font-size: 14px; font-weight: 400;
+  color: var(--text-primary); text-decoration: none;
+  border-right: 2px solid transparent;
+  transition: background 120ms ease;
+}
+.sidebar-nav a:hover { background: var(--surface-fill-cool-neutral-200); }
+.sidebar-nav a.active {
+  font-weight: 600; color: var(--color-primary-100);
+  background: var(--color-brand-100);
+  border-right-color: var(--color-primary-100);
+}
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--surface-fill-cool-neutral-500);
+  font-size: 11px; color: var(--icon-hint);
+}
+
+/* ── MAIN CONTENT ───────────────────────────────────────────────────── */
+.main {
+  margin-left: 240px; flex: 1;
+  padding: 48px 48px 80px;
+  max-width: 1200px;
+}
+
+/* ── PAGE HEADER ────────────────────────────────────────────────────── */
+.page-header { margin-bottom: 40px; }
+.page-header h1 {
+  font-size: 28px; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 8px; line-height: 40px;
+}
+.page-header p {
+  font-size: 14px; color: var(--text-secondary); line-height: 24px; max-width: 680px;
+}
+
+/* ── SECTIONS ───────────────────────────────────────────────────────── */
+section { margin-bottom: 64px; scroll-margin-top: 32px; }
+.section-title {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--surface-fill-cool-neutral-500);
+}
+.subsection-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-tertiary); margin-bottom: 12px; margin-top: 24px;
+}
+
+/* ── COLOR SWATCHES ─────────────────────────────────────────────────── */
+.swatch-group { margin-bottom: 24px; }
+.swatch-row { display: flex; gap: 4px; flex-wrap: wrap; }
+.swatch {
+  width: 56px; cursor: pointer; border-radius: var(--corner-radius-8);
+  overflow: hidden; border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 120ms ease;
+}
+.swatch:hover { transform: scale(1.06); }
+.swatch-color { height: 40px; }
+.swatch-label {
+  background: var(--surface-fill-neutral-0);
+  padding: 4px 4px 5px;
+  font-size: 9px; color: var(--text-tertiary);
+  text-align: center; line-height: 1.3;
+}
+.copied-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--surface-fill-neutral-900); color: #fff;
+  padding: 8px 16px; border-radius: var(--corner-radius-100);
+  font-size: 12px; font-weight: 600; pointer-events: none;
+  opacity: 0; transition: opacity 200ms ease; z-index: 9999;
+}
+.copied-toast.show { opacity: 1; }
+
+/* ── TYPOGRAPHY SCALE ───────────────────────────────────────────────── */
+.type-row {
+  display: flex; align-items: baseline; gap: 24px;
+  padding: 16px 0; border-bottom: 1px solid var(--surface-fill-cool-neutral-400);
+}
+.type-meta {
+  min-width: 160px; flex-shrink: 0;
+}
+.type-meta .type-name { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+.type-meta .type-specs { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+.type-sample { flex: 1; }
+
+/* ── SPACING ────────────────────────────────────────────────────────── */
+.spacing-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 8px 0; border-bottom: 1px solid var(--surface-fill-cool-neutral-400);
+}
+.spacing-bar-wrap { width: 200px; }
+.spacing-bar { background: var(--color-brand-400); border-radius: 2px; height: 8px; }
+.spacing-label { font-size: 12px; color: var(--text-secondary); min-width: 60px; }
+.spacing-token { font-size: 11px; color: var(--text-tertiary); font-family: monospace; }
+
+/* ── CORNER RADII ───────────────────────────────────────────────────── */
+.radius-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+.radius-card {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 20px;
+  background: var(--surface-fill-neutral-0);
+  border: 1px solid var(--surface-fill-cool-neutral-500);
+  border-radius: var(--corner-radius-8);
+  min-width: 100px;
+}
+.radius-preview {
+  width: 56px; height: 56px;
+  background: var(--color-brand-200);
+  border: 2px solid var(--color-primary-100);
+}
+.radius-label { font-size: 11px; color: var(--text-secondary); text-align: center; font-weight: 600; }
+.radius-value { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
+
+/* ── SHADOWS ────────────────────────────────────────────────────────── */
+.shadow-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+.shadow-card {
+  background: var(--surface-fill-neutral-0);
+  border: 1px solid var(--surface-fill-cool-neutral-400);
+  border-radius: var(--corner-radius-12);
+  padding: 24px 20px 16px;
+  min-width: 180px; display: flex; flex-direction: column; gap: 12px;
+}
+.shadow-preview {
+  width: 80px; height: 56px; background: var(--surface-fill-neutral-0);
+  border-radius: var(--corner-radius-8); align-self: center;
+}
+.shadow-name { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+.shadow-value { font-size: 10px; color: var(--text-tertiary); font-family: monospace; line-height: 1.5; }
+
+/* ── BUTTONS ────────────────────────────────────────────────────────── */
+.btn-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+.btn-group { display: flex; flex-direction: column; gap: 8px; }
+.btn-group-label {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-tertiary); margin-bottom: 4px;
+}
+.ds-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-family); font-size: 14px; font-weight: 600;
+  border-radius: var(--corner-radius-100); border: none; cursor: pointer;
+  text-decoration: none; transition: all 120ms ease; white-space: nowrap;
+  padding: 10px 20px; line-height: 20px;
+}
+.ds-btn--sm { padding: 6px 14px; font-size: 12px; }
+.ds-btn--lg { padding: 14px 28px; font-size: 16px; }
+/* Primary */
+.ds-btn--primary {
+  background: var(--color-primary-100); color: #fff;
+}
+.ds-btn--primary:hover { background: var(--color-primary-200); }
+/* Secondary */
+.ds-btn--secondary {
+  background: transparent; color: var(--color-primary-100);
+  border: 1.5px solid var(--color-primary-100);
+}
+.ds-btn--secondary:hover { background: var(--color-brand-100); }
+/* Tertiary */
+.ds-btn--tertiary {
+  background: transparent; color: var(--color-primary-100);
+}
+.ds-btn--tertiary:hover { background: var(--color-brand-100); }
+/* Special Primary */
+.ds-btn--special-primary {
+  background: var(--surface-fill-neutral-900); color: #fff;
+}
+.ds-btn--special-primary:hover { background: var(--surface-fill-neutral-800, #3D3D3D); }
+/* Special Secondary */
+.ds-btn--special-secondary {
+  background: transparent; color: var(--surface-fill-neutral-900);
+  border: 1.5px solid var(--surface-fill-neutral-900);
+}
+.ds-btn--special-secondary:hover { background: var(--surface-fill-neutral-100); }
+/* Destructive */
+.ds-btn--destructive {
+  background: var(--color-error-400); color: #fff;
+}
+.ds-btn--destructive:hover { background: var(--color-error-500); }
+/* Disabled */
+.ds-btn:disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+
+/* ── ICON BUTTON ────────────────────────────────────────────────────── */
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: var(--corner-radius-8);
+  border: none; cursor: pointer; background: transparent;
+  color: var(--icon-action-default); transition: background 120ms ease;
+}
+.icon-btn:hover { background: var(--color-brand-100); }
+.icon-btn--filled {
+  background: var(--color-primary-100); color: #fff;
+}
+.icon-btn--filled:hover { background: var(--color-primary-200); }
+.icon-btn--outlined {
+  border: 1.5px solid var(--color-primary-100);
+  color: var(--color-primary-100);
+}
+.icon-btn--sm { width: 32px; height: 32px; border-radius: var(--corner-radius-4); }
+.icon-btn--lg { width: 48px; height: 48px; border-radius: var(--corner-radius-12); }
+
+/* ── MATERIAL ICONS ─────────────────────────────────────────────────── */
+.mi {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal; font-size: 20px; line-height: 1;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+  user-select: none;
+}
+.mi-fill { font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 20; }
+
+/* ── ICON GALLERY ───────────────────────────────────────────────────── */
+.icon-gallery { display: flex; flex-wrap: wrap; gap: 8px; }
+.icon-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 8px; width: 80px;
+  background: var(--surface-fill-neutral-0);
+  border: 1px solid var(--surface-fill-cool-neutral-500);
+  border-radius: var(--corner-radius-8);
+  cursor: pointer; transition: all 120ms ease;
+}
+.icon-tile:hover { background: var(--color-brand-100); border-color: var(--color-brand-400); }
+.icon-tile .mi { font-size: 22px; color: var(--icon-primary); }
+.icon-tile span.icon-name {
+  font-size: 9px; color: var(--text-tertiary); text-align: center;
+  line-height: 1.3; word-break: break-all;
+}
+
+/* ── TOOLTIP ────────────────────────────────────────────────────────── */
+.tooltip-demo { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+.tooltip-wrap { position: relative; display: inline-flex; }
+.tooltip-wrap .tooltip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%); background: var(--surface-fill-neutral-900);
+  color: #fff; font-size: 12px; padding: 6px 10px;
+  border-radius: var(--corner-radius-4); white-space: nowrap;
+  pointer-events: none; opacity: 0; transition: opacity 150ms ease;
+}
+.tooltip-wrap .tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%); border: 5px solid transparent;
+  border-top-color: var(--surface-fill-neutral-900);
+}
+.tooltip-wrap:hover .tooltip { opacity: 1; }
+.tooltip-wrap .tooltip.bottom {
+  top: calc(100% + 8px); bottom: auto;
+}
+.tooltip-wrap .tooltip.bottom::after {
+  top: auto; bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--surface-fill-neutral-900);
+}
+
+/* ── BADGE / CHIP ───────────────────────────────────────────────────── */
+.badge-grid { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--corner-radius-100);
+  font-size: 12px; font-weight: 600;
+}
+.badge--primary { background: var(--color-brand-200); color: var(--color-primary-100); }
+.badge--success { background: var(--color-success-100); color: var(--color-success-500); }
+.badge--error   { background: var(--color-error-100);   color: var(--color-error-400); }
+.badge--warning { background: var(--color-warning-100); color: var(--color-warning-400); }
+.badge--info    { background: var(--color-information-100); color: var(--color-information-400); }
+.badge--neutral { background: var(--surface-fill-neutral-200); color: var(--text-secondary); }
+.badge--magenta { background: var(--color-magenta-100); color: var(--color-magenta-500); }
+.badge--orange  { background: var(--color-orange-100);  color: var(--color-orange-500); }
+
+/* ── STATE COLORS ───────────────────────────────────────────────────── */
+.state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.state-card {
+  border-radius: var(--corner-radius-12); padding: 16px;
+  border: 1px solid; display: flex; gap: 10px; align-items: flex-start;
+}
+.state-card .mi { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.state-card-body { }
+.state-card-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.state-card-desc { font-size: 12px; line-height: 1.5; }
+.state--success { background: var(--color-success-100); border-color: var(--color-success-300); }
+.state--success .mi, .state--success .state-card-title { color: var(--color-success-500); }
+.state--success .state-card-desc { color: var(--color-success-500); opacity: 0.8; }
+.state--error   { background: var(--color-error-100);   border-color: var(--color-error-300); }
+.state--error .mi, .state--error .state-card-title { color: var(--color-error-400); }
+.state--error .state-card-desc { color: var(--color-error-400); opacity: 0.8; }
+.state--warning { background: var(--color-warning-100); border-color: var(--color-warning-200); }
+.state--warning .mi, .state--warning .state-card-title { color: var(--color-warning-400); }
+.state--warning .state-card-desc { color: var(--color-warning-400); opacity: 0.8; }
+.state--info    { background: var(--color-information-100); border-color: var(--color-information-200); }
+.state--info .mi, .state--info .state-card-title { color: var(--color-information-400); }
+.state--info .state-card-desc { color: var(--color-information-400); opacity: 0.8; }
+
+/* ── AI GRADIENT ────────────────────────────────────────────────────── */
+.ai-gradient-bar {
+  height: 6px; border-radius: var(--corner-radius-100);
+  background: linear-gradient(90deg,
+    #00ABAB 0%, #05A5E6 25%, #C03A97 50%, #FD8503 70%, #86BC25 100%);
+  margin-bottom: 16px;
+}
+
+/* ── TOKENS TABLE ───────────────────────────────────────────────────── */
+.token-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.token-table th {
+  text-align: left; padding: 8px 12px; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-tertiary); border-bottom: 1px solid var(--surface-fill-cool-neutral-500);
+}
+.token-table td { padding: 8px 12px; border-bottom: 1px solid var(--surface-fill-cool-neutral-300); vertical-align: middle; }
+.token-table tr:last-child td { border-bottom: none; }
+.token-table .token-name { font-family: monospace; font-size: 11px; color: var(--color-primary-100); }
+.token-table .token-value { font-family: monospace; font-size: 11px; color: var(--text-tertiary); }
+.token-swatch { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); display: inline-block; vertical-align: middle; }
+
+/* ── DIVIDER ────────────────────────────────────────────────────────── */
+.h-divider { height: 1px; background: var(--surface-fill-cool-neutral-500); margin: 32px 0; }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ──────────────────────────────────────────────────────── -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-brand-label">Ascend</div>
+    <div class="sidebar-brand-title">Design System 2.0</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Foundation</div>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#radii">Corner Radii</a>
+    <a href="#shadows">Shadows</a>
+    <a href="#states">State Colors</a>
+    <div class="sidebar-section-label">Assets</div>
+    <a href="#card-backgrounds">Card Backgrounds</a>
+    <div class="sidebar-section-label">Components</div>
+    <a href="#buttons">Buttons</a>
+    <a href="#icon-buttons">Icon Buttons</a>
+    <a href="#badges">Badges</a>
+    <a href="#tooltips">Tooltips</a>
+    <a href="#icons">Icons</a>
+    <div class="sidebar-section-label">Tokens</div>
+    <a href="#token-ref">Token Reference</a>
+  </nav>
+  <div class="sidebar-footer">v2.0.0 · Deloitte Ascend</div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────────── -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="ai-gradient-bar"></div>
+    <h1>Deloitte Ascend<sup style="font-size:16px;vertical-align:super;">TM</sup></h1>
+    <p>Design System 2.0 — Reference for colors, typography, spacing, components, and tokens. Click any swatch to copy its value.</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════ COLORS -->
+  <section id="colors">
+    <div class="section-title">Colors</div>
+
+    <div class="subsection-title">Primary & Brand</div>
+    <div class="swatch-row">
+      <div class="swatch" onclick="copySwatch('#007680','--color-primary-100')"><div class="swatch-color" style="background:#007680"></div><div class="swatch-label">Primary<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#1E5C5F','--color-primary-200')"><div class="swatch-color" style="background:#1E5C5F"></div><div class="swatch-label">Primary<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#F4F9F9','--color-brand-100')"><div class="swatch-color" style="background:#F4F9F9"></div><div class="swatch-label">Brand<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#EAF2F3','--color-brand-200')"><div class="swatch-color" style="background:#EAF2F3"></div><div class="swatch-label">Brand<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#C8E1E4','--color-brand-400')"><div class="swatch-color" style="background:#C8E1E4"></div><div class="swatch-label">Brand<br>400</div></div>
+      <div class="swatch" onclick="copySwatch('#63B7B7','--color-brand-500')"><div class="swatch-color" style="background:#63B7B7"></div><div class="swatch-label">Brand<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#004F59','--color-brand-600')"><div class="swatch-color" style="background:#004F59"></div><div class="swatch-label">Brand<br>600</div></div>
+    </div>
+
+    <div class="subsection-title">Neutral</div>
+    <div class="swatch-row">
+      <div class="swatch" onclick="copySwatch('#FFFFFF','--color-neutral-0')"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #eee"></div><div class="swatch-label">0</div></div>
+      <div class="swatch" onclick="copySwatch('#F9F9F9','--color-neutral-100')"><div class="swatch-color" style="background:#F9F9F9"></div><div class="swatch-label">100</div></div>
+      <div class="swatch" onclick="copySwatch('#F1F1F1','--color-neutral-200')"><div class="swatch-color" style="background:#F1F1F1"></div><div class="swatch-label">200</div></div>
+      <div class="swatch" onclick="copySwatch('#EBEAEA','--color-neutral-300')"><div class="swatch-color" style="background:#EBEAEA"></div><div class="swatch-label">300</div></div>
+      <div class="swatch" onclick="copySwatch('#BDBDBD','--color-neutral-400')"><div class="swatch-color" style="background:#BDBDBD"></div><div class="swatch-label">400</div></div>
+      <div class="swatch" onclick="copySwatch('#8F8F8F','--color-neutral-500')"><div class="swatch-color" style="background:#8F8F8F"></div><div class="swatch-label">500</div></div>
+      <div class="swatch" onclick="copySwatch('#747474','--color-neutral-600')"><div class="swatch-color" style="background:#747474"></div><div class="swatch-label">600</div></div>
+      <div class="swatch" onclick="copySwatch('#5E5E5E','--color-neutral-700')"><div class="swatch-color" style="background:#5E5E5E"></div><div class="swatch-label">700</div></div>
+      <div class="swatch" onclick="copySwatch('#3D3D3D','--color-neutral-800')"><div class="swatch-color" style="background:#3D3D3D"></div><div class="swatch-label">800</div></div>
+      <div class="swatch" onclick="copySwatch('#282828','--color-neutral-900')"><div class="swatch-color" style="background:#282828"></div><div class="swatch-label">900</div></div>
+    </div>
+
+    <div class="subsection-title">Cool Neutral</div>
+    <div class="swatch-row">
+      <div class="swatch" onclick="copySwatch('#F7F8F8','--color-cool-neutral-100')"><div class="swatch-color" style="background:#F7F8F8"></div><div class="swatch-label">100</div></div>
+      <div class="swatch" onclick="copySwatch('#F8FAFA','--color-cool-neutral-200')"><div class="swatch-color" style="background:#F8FAFA"></div><div class="swatch-label">200</div></div>
+      <div class="swatch" onclick="copySwatch('#F3F6F6','--color-cool-neutral-300')"><div class="swatch-color" style="background:#F3F6F6"></div><div class="swatch-label">300</div></div>
+      <div class="swatch" onclick="copySwatch('#EFF3F3','--color-cool-neutral-400')"><div class="swatch-color" style="background:#EFF3F3"></div><div class="swatch-label">400</div></div>
+      <div class="swatch" onclick="copySwatch('#EAEEEE','--color-cool-neutral-500')"><div class="swatch-color" style="background:#EAEEEE"></div><div class="swatch-label">500</div></div>
+      <div class="swatch" onclick="copySwatch('#DFE7E8','--color-cool-neutral-600')"><div class="swatch-color" style="background:#DFE7E8"></div><div class="swatch-label">600</div></div>
+      <div class="swatch" onclick="copySwatch('#D7E0E0','--color-cool-neutral-700')"><div class="swatch-color" style="background:#D7E0E0"></div><div class="swatch-label">700</div></div>
+      <div class="swatch" onclick="copySwatch('#B7C6C8','--color-cool-neutral-800')"><div class="swatch-color" style="background:#B7C6C8"></div><div class="swatch-label">800</div></div>
+    </div>
+
+    <div class="subsection-title">Secondary Palette</div>
+    <div class="swatch-row">
+      <div class="swatch" onclick="copySwatch('#C4D600','--color-secondary-100')"><div class="swatch-color" style="background:#C4D600"></div><div class="swatch-label">Lime<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#9DD4CF','--color-secondary-200')"><div class="swatch-color" style="background:#9DD4CF"></div><div class="swatch-label">Teal<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#4DC5B4','--color-secondary-300')"><div class="swatch-color" style="background:#4DC5B4"></div><div class="swatch-label">Teal<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#009A44','--color-secondary-400')"><div class="swatch-color" style="background:#009A44"></div><div class="swatch-label">Green<br>400</div></div>
+      <div class="swatch" onclick="copySwatch('#046A38','--color-secondary-500')"><div class="swatch-color" style="background:#046A38"></div><div class="swatch-label">Green<br>500</div></div>
+    </div>
+
+    <div class="subsection-title">Semantic — Error · Warning · Success · Info</div>
+    <div class="swatch-row">
+      <div class="swatch" onclick="copySwatch('#FFF4F3','--color-error-100')"><div class="swatch-color" style="background:#FFF4F3"></div><div class="swatch-label">Error<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#F2B8B5','--color-error-300')"><div class="swatch-color" style="background:#F2B8B5"></div><div class="swatch-label">Error<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#DA291C','--color-error-400')"><div class="swatch-color" style="background:#DA291C"></div><div class="swatch-label">Error<br>400</div></div>
+      <div class="swatch" onclick="copySwatch('#B71C13','--color-error-500')"><div class="swatch-color" style="background:#B71C13"></div><div class="swatch-label">Error<br>500</div></div>
+      <div class="swatch" style="width:8px;background:transparent;border:none;cursor:default"></div>
+      <div class="swatch" onclick="copySwatch('#FFF7EC','--color-warning-100')"><div class="swatch-color" style="background:#FFF7EC"></div><div class="swatch-label">Warn<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#FFCD00','--color-warning-300')"><div class="swatch-color" style="background:#FFCD00"></div><div class="swatch-label">Warn<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#936414','--color-warning-400')"><div class="swatch-color" style="background:#936414"></div><div class="swatch-label">Warn<br>400</div></div>
+      <div class="swatch" style="width:8px;background:transparent;border:none;cursor:default"></div>
+      <div class="swatch" onclick="copySwatch('#EFFBF2','--color-success-100')"><div class="swatch-color" style="background:#EFFBF2"></div><div class="swatch-label">Succ<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#009A44','--color-success-400')"><div class="swatch-color" style="background:#009A44"></div><div class="swatch-label">Succ<br>400</div></div>
+      <div class="swatch" onclick="copySwatch('#1D7E33','--color-success-500')"><div class="swatch-color" style="background:#1D7E33"></div><div class="swatch-label">Succ<br>500</div></div>
+      <div class="swatch" style="width:8px;background:transparent;border:none;cursor:default"></div>
+      <div class="swatch" onclick="copySwatch('#EFF3FC','--color-information-100')"><div class="swatch-color" style="background:#EFF3FC"></div><div class="swatch-label">Info<br>100</div></div>
+      <div class="swatch" onclick="copySwatch('#325FF1','--color-information-300')"><div class="swatch-color" style="background:#325FF1"></div><div class="swatch-label">Info<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#054EB3','--color-information-400')"><div class="swatch-color" style="background:#054EB3"></div><div class="swatch-label">Info<br>400</div></div>
+    </div>
+
+    <div class="subsection-title">Extended Palette</div>
+    <div class="swatch-row" style="margin-bottom:8px">
+      <div class="swatch" onclick="copySwatch('#C03A97','--color-magenta-500')"><div class="swatch-color" style="background:#C03A97"></div><div class="swatch-label">Mgnt<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#EDDDE7','--color-magenta-300')"><div class="swatch-color" style="background:#EDDDE7"></div><div class="swatch-label">Mgnt<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#FD8503','--color-orange-500')"><div class="swatch-color" style="background:#FD8503"></div><div class="swatch-label">Orgn<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#F5E2CE','--color-orange-300')"><div class="swatch-color" style="background:#F5E2CE"></div><div class="swatch-label">Orgn<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#4672BE','--color-indigo-500')"><div class="swatch-color" style="background:#4672BE"></div><div class="swatch-label">Indig<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#B3C5E5','--color-indigo-200')"><div class="swatch-color" style="background:#B3C5E5"></div><div class="swatch-label">Indig<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#00ABAB','--color-turquoise-500')"><div class="swatch-color" style="background:#00ABAB"></div><div class="swatch-label">Turq<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#D7EEEE','--color-turquoise-200')"><div class="swatch-color" style="background:#D7EEEE"></div><div class="swatch-label">Turq<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#734ED8','--color-voilet-600')"><div class="swatch-color" style="background:#734ED8"></div><div class="swatch-label">Vlt<br>600</div></div>
+      <div class="swatch" onclick="copySwatch('#E5DCFF','--color-voilet-300')"><div class="swatch-color" style="background:#E5DCFF"></div><div class="swatch-label">Vlt<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#05A5E6','--color-blue-500')"><div class="swatch-color" style="background:#05A5E6"></div><div class="swatch-label">Blue<br>500</div></div>
+      <div class="swatch" onclick="copySwatch('#CFE2EF','--color-blue-200')"><div class="swatch-color" style="background:#CFE2EF"></div><div class="swatch-label">Blue<br>200</div></div>
+      <div class="swatch" onclick="copySwatch('#86BC25','--color-light-green-700')"><div class="swatch-color" style="background:#86BC25"></div><div class="swatch-label">LGrn<br>700</div></div>
+      <div class="swatch" onclick="copySwatch('#FBBE22','--color-rewards-300')"><div class="swatch-color" style="background:#FBBE22"></div><div class="swatch-label">Rwrd<br>300</div></div>
+      <div class="swatch" onclick="copySwatch('#E86301','--color-rewards-400')"><div class="swatch-color" style="background:#E86301"></div><div class="swatch-label">Rwrd<br>400</div></div>
+    </div>
+
+    <div class="subsection-title">AI Gradient</div>
+    <div style="height:12px;border-radius:var(--corner-radius-100);background:linear-gradient(90deg,#00ABAB 0%,#05A5E6 25%,#C03A97 50%,#FD8503 70%,#86BC25 100%);margin-bottom:8px"></div>
+    <div style="font-size:11px;color:var(--text-tertiary);font-family:monospace">Turquoise → Blue → Magenta → Orange → Light Green</div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ TYPOGRAPHY -->
+  <section id="typography">
+    <div class="section-title">Typography</div>
+    <p style="font-size:12px;color:var(--text-tertiary);margin-bottom:20px">Font family: <strong>Open Sans</strong> · Weights: 300 Light · 400 Regular · 600 Semibold · 700 Bold</p>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Display 1</div><div class="type-specs">36px / 44px · Semibold</div></div>
+      <div class="type-sample" style="font-size:36px;line-height:44px;font-weight:600">Design System</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Display 2</div><div class="type-specs">32px / 40px · Semibold</div></div>
+      <div class="type-sample" style="font-size:32px;line-height:40px;font-weight:600">Design System</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Heading 1</div><div class="type-specs">28px / 40px · Bold</div></div>
+      <div class="type-sample" style="font-size:28px;line-height:40px;font-weight:700">Heading One</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Heading 2</div><div class="type-specs">24px / 32px · Bold</div></div>
+      <div class="type-sample" style="font-size:24px;line-height:32px;font-weight:700">Heading Two</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Heading 3</div><div class="type-specs">20px / 28px · Semibold</div></div>
+      <div class="type-sample" style="font-size:20px;line-height:28px;font-weight:600">Heading Three</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Heading 4</div><div class="type-specs">18px / 26px · Semibold</div></div>
+      <div class="type-sample" style="font-size:18px;line-height:26px;font-weight:600">Heading Four</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body Large</div><div class="type-specs">16px / 24px · Regular</div></div>
+      <div class="type-sample" style="font-size:16px;line-height:24px">Body text large — The quick brown fox jumps over the lazy dog.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body Regular</div><div class="type-specs">14px / 24px · Regular</div></div>
+      <div class="type-sample" style="font-size:14px;line-height:24px">Body text regular — The quick brown fox jumps over the lazy dog.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body Small</div><div class="type-specs">12px / 20px · Regular</div></div>
+      <div class="type-sample" style="font-size:12px;line-height:20px">Body small — The quick brown fox jumps over the lazy dog.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body XSmall</div><div class="type-specs">10px / 18px · Regular</div></div>
+      <div class="type-sample" style="font-size:10px;line-height:18px">Body extra small — The quick brown fox jumps over the lazy dog.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Title All Caps</div><div class="type-specs">14px / 20px · Semibold · UC</div></div>
+      <div class="type-sample" style="font-size:14px;line-height:20px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Section Title</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Text Action</div><div class="type-specs">14px · Semibold · Teal</div></div>
+      <div class="type-sample" style="font-size:14px;font-weight:600;color:var(--text-action-default)">Link text action</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ SPACING -->
+  <section id="spacing">
+    <div class="section-title">Spacing Scale</div>
+    <div id="spacing-rows"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ CORNER RADII -->
+  <section id="radii">
+    <div class="section-title">Corner Radii</div>
+    <div class="radius-grid" id="radius-grid"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ SHADOWS -->
+  <section id="shadows">
+    <div class="section-title">Shadows & Effects</div>
+    <div class="shadow-grid">
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:0 2px 8px rgba(114,123,156,0.25)"></div>
+        <div>
+          <div class="shadow-name">Drop Shadow S</div>
+          <div class="shadow-value">0 2px 8px<br>rgba(114,123,156,0.25)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:0 4px 20px rgba(114,123,156,0.25)"></div>
+        <div>
+          <div class="shadow-name">Drop Shadow M</div>
+          <div class="shadow-value">0 4px 20px<br>rgba(114,123,156,0.25)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:0 4px 40px rgba(114,123,156,0.25)"></div>
+        <div>
+          <div class="shadow-name">Drop Shadow L</div>
+          <div class="shadow-value">0 4px 40px<br>rgba(114,123,156,0.25)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:0 4px 72px rgba(114,123,156,0.25)"></div>
+        <div>
+          <div class="shadow-name">Drop Shadow XL</div>
+          <div class="shadow-value">0 4px 72px<br>rgba(114,123,156,0.25)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:inset 0 0 20px rgba(88,88,88,0.06)"></div>
+        <div>
+          <div class="shadow-name">Inner Shadow 1</div>
+          <div class="shadow-value">inset 0 0 20px<br>rgba(88,88,88,0.06)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="box-shadow:inset 0 0 20px rgba(151,159,177,0.14)"></div>
+        <div>
+          <div class="shadow-name">Inner Shadow 2</div>
+          <div class="shadow-value">inset 0 0 20px<br>rgba(151,159,177,0.14)</div>
+        </div>
+      </div>
+      <div class="shadow-card">
+        <div class="shadow-preview" style="background:rgba(255,255,255,0.6);backdrop-filter:blur(12px);border:1px solid rgba(235,234,234,0.8)"></div>
+        <div>
+          <div class="shadow-name">Glass Effect</div>
+          <div class="shadow-value">backdrop-filter:<br>blur(12px)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ STATE COLORS -->
+  <section id="states">
+    <div class="section-title">State Colors</div>
+    <div class="state-grid">
+      <div class="state-card state--success">
+        <span class="mi mi-fill" style="color:var(--color-success-500)">check_circle</span>
+        <div class="state-card-body">
+          <div class="state-card-title">Success</div>
+          <div class="state-card-desc">Operation completed successfully.</div>
+        </div>
+      </div>
+      <div class="state-card state--error">
+        <span class="mi mi-fill" style="color:var(--color-error-400)">cancel</span>
+        <div class="state-card-body">
+          <div class="state-card-title">Error</div>
+          <div class="state-card-desc">Something went wrong. Please try again.</div>
+        </div>
+      </div>
+      <div class="state-card state--warning">
+        <span class="mi mi-fill" style="color:var(--color-warning-400)">warning</span>
+        <div class="state-card-body">
+          <div class="state-card-title">Warning</div>
+          <div class="state-card-desc">This action may have consequences.</div>
+        </div>
+      </div>
+      <div class="state-card state--info">
+        <span class="mi mi-fill" style="color:var(--color-information-400)">info</span>
+        <div class="state-card-body">
+          <div class="state-card-title">Information</div>
+          <div class="state-card-desc">Here's something you should know.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ CARD BACKGROUNDS -->
+  <section id="card-backgrounds">
+    <div class="section-title">Card Backgrounds</div>
+    <p style="font-size:12px;color:var(--text-tertiary);margin-bottom:20px">
+      Stored in <code style="font-family:monospace;background:var(--surface-fill-cool-neutral-300);padding:1px 5px;border-radius:3px">packages/assets/card-backgrounds/</code>.
+      Import via <code style="font-family:monospace;background:var(--surface-fill-cool-neutral-300);padding:1px 5px;border-radius:3px">import { cardBackgrounds } from '@ds/assets'</code>.
+      Click any card to copy the import key.
+    </p>
+
+    <div class="subsection-title">Marketplace</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px">
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.marketplaceManual');showToast('Copied: cardBackgrounds.marketplaceManual')">
+        <div style="height:180px;overflow:hidden;background:#f3f3f3">
+          <img src="./packages/assets/card-backgrounds/marketplace-manual.png" alt="Marketplace Manual" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Manual Tool Bg</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.marketplaceManual</div>
+          <div style="font-size:10px;color:var(--text-hint);margin-top:4px">marketplace-manual.png</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.marketplaceAgentic');showToast('Copied: cardBackgrounds.marketplaceAgentic')">
+        <div style="height:180px;overflow:hidden;background:#f3f3f3">
+          <img src="./packages/assets/card-backgrounds/marketplace-agentic.png" alt="Marketplace Agentic" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Agentic Card Bg</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.marketplaceAgentic</div>
+          <div style="font-size:10px;color:var(--text-hint);margin-top:4px">marketplace-agentic.png</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Pill Backgrounds</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:28px">
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.pillManual');showToast('Copied: cardBackgrounds.pillManual')">
+        <div style="height:80px;background:#f3f3f3;display:flex;align-items:center;justify-content:center;padding:12px">
+          <img src="./packages/assets/card-backgrounds/pill-manual.png" alt="Pill Manual" style="height:100%;object-fit:cover;border-radius:4px">
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Manual Pill Bg</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.pillManual</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.pillAgentic');showToast('Copied: cardBackgrounds.pillAgentic')">
+        <div style="height:80px;background:#f3f3f3;display:flex;align-items:center;justify-content:center;padding:12px">
+          <img src="./packages/assets/card-backgrounds/pill-agentic.png" alt="Pill Agentic" style="height:100%;object-fit:cover;border-radius:4px">
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Agentic Pill Bg</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.pillAgentic</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Upcoming Meeting · Priority · Search</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:28px">
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.upcomingMeeting');showToast('Copied: cardBackgrounds.upcomingMeeting')">
+        <div style="height:160px;overflow:hidden;background:#f3f3f3">
+          <img src="./packages/assets/card-backgrounds/upcoming-meeting.png" alt="Upcoming Meeting" style="width:100%;height:100%;object-fit:cover;object-position:bottom">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Upcoming Meeting</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.upcomingMeeting</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.priorityDefault');showToast('Copied: cardBackgrounds.priorityDefault')">
+        <div style="height:160px;overflow:hidden;background:#f3f3f3">
+          <img src="./packages/assets/card-backgrounds/priority-default.png" alt="Priority Default" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Priority Card — Default</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.priorityDefault</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.priorityHover');showToast('Copied: cardBackgrounds.priorityHover')">
+        <div style="height:160px;overflow:hidden;background:#afdde2;display:flex;align-items:center;justify-content:center">
+          <img src="./packages/assets/card-backgrounds/priority-hover.svg" alt="Priority Hover" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Priority Card — Hover</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.priorityHover</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.searchBg');showToast('Copied: cardBackgrounds.searchBg')">
+        <div style="height:160px;overflow:hidden;background:#f0f9fa;display:flex;align-items:center;justify-content:center">
+          <img src="./packages/assets/card-backgrounds/search-bg.svg" alt="Search Bg" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Search Background</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.searchBg</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Rewards — Top Banner</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px">
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.rewardsTopBanner1');showToast('Copied: cardBackgrounds.rewardsTopBanner1')">
+        <div style="height:160px;overflow:hidden;background:linear-gradient(180deg,#f5f2e4,#fbfaf7);position:relative">
+          <img src="./packages/assets/card-backgrounds/rewards-top-banner-1.png" alt="Rewards Banner 1" style="position:absolute;right:0;top:0;height:100%;object-fit:contain">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Top Banner — Decoration 1</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.rewardsTopBanner1</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.rewardsTopBanner2');showToast('Copied: cardBackgrounds.rewardsTopBanner2')">
+        <div style="height:160px;overflow:hidden;background:linear-gradient(180deg,#f5f2e4,#fbfaf7);position:relative">
+          <img src="./packages/assets/card-backgrounds/rewards-top-banner-2.png" alt="Rewards Banner 2" style="position:absolute;right:0;bottom:0;height:80%;object-fit:contain;transform:scaleY(-1)">
+        </div>
+        <div style="padding:12px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Top Banner — Decoration 2</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.rewardsTopBanner2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Rewards — Other Backgrounds</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:28px">
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.rewardsOther1');showToast('Copied: cardBackgrounds.rewardsOther1')">
+        <div style="height:140px;overflow:hidden;background:#f9f9f9">
+          <img src="./packages/assets/card-backgrounds/rewards-other-1.png" alt="Rewards Other 1" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Rewards Other 1</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.rewardsOther1</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.rewardsOther2');showToast('Copied: cardBackgrounds.rewardsOther2')">
+        <div style="height:140px;overflow:hidden;background:#f9f9f9">
+          <img src="./packages/assets/card-backgrounds/rewards-other-2.png" alt="Rewards Other 2" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Rewards Other 2</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.rewardsOther2</div>
+        </div>
+      </div>
+      <div class="shadow-card" style="padding:0;overflow:hidden;cursor:pointer" onclick="navigator.clipboard.writeText('cardBackgrounds.rewardsOther3');showToast('Copied: cardBackgrounds.rewardsOther3')">
+        <div style="height:140px;overflow:hidden;background:#f9f9f9">
+          <img src="./packages/assets/card-backgrounds/rewards-other-3.png" alt="Rewards Other 3" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Rewards Other 3</div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:monospace">cardBackgrounds.rewardsOther3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage code -->
+    <div class="subsection-title">Usage</div>
+    <pre style="background:var(--surface-fill-neutral-900);color:#e8e8e8;padding:20px;border-radius:var(--corner-radius-12);font-size:12px;line-height:1.7;overflow-x:auto"><code><span style="color:#9DD4CF">import</span> { cardBackgrounds } <span style="color:#9DD4CF">from</span> <span style="color:#C4D600">'@ds/assets'</span>
+
+<span style="color:#8F8F8F">// CSS background-image on a card div</span>
+&lt;div style={{
+  backgroundImage: <span style="color:#C4D600">`url(<span style="color:#9DD4CF">${cardBackgrounds.marketplaceManual}</span>)`</span>,
+  backgroundSize: <span style="color:#C4D600">'cover'</span>,
+  backgroundPosition: <span style="color:#C4D600">'center'</span>,
+}} /&gt;
+
+<span style="color:#8F8F8F">// next/image</span>
+&lt;Image src={cardBackgrounds.priorityDefault} fill alt="" style={{ objectFit: <span style="color:#C4D600">'cover'</span> }} /&gt;
+
+<span style="color:#8F8F8F">// Hover state swap</span>
+backgroundImage: <span style="color:#C4D600">`url(<span style="color:#9DD4CF">${isHovered ? cardBackgrounds.priorityHover : cardBackgrounds.priorityDefault}</span>)`</span></code></pre>
+  </section>
+
+  <!-- ════════════════════════════════════════════ BUTTONS -->
+  <section id="buttons">
+    <div class="section-title">Buttons</div>
+
+    <div class="subsection-title">Sizes</div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px">
+      <button class="ds-btn ds-btn--primary ds-btn--sm"><span class="mi" style="font-size:16px">add</span>Small</button>
+      <button class="ds-btn ds-btn--primary">Medium</button>
+      <button class="ds-btn ds-btn--primary ds-btn--lg">Large</button>
+    </div>
+
+    <div class="subsection-title">Variants — Light Background</div>
+    <div class="btn-grid" style="margin-bottom:24px">
+      <div class="btn-group">
+        <div class="btn-group-label">Primary</div>
+        <button class="ds-btn ds-btn--primary">Get Started</button>
+        <button class="ds-btn ds-btn--primary"><span class="mi" style="font-size:16px">add</span>Create New</button>
+        <button class="ds-btn ds-btn--primary" disabled>Disabled</button>
+      </div>
+      <div class="btn-group">
+        <div class="btn-group-label">Secondary</div>
+        <button class="ds-btn ds-btn--secondary">Learn More</button>
+        <button class="ds-btn ds-btn--secondary"><span class="mi" style="font-size:16px">download</span>Export</button>
+        <button class="ds-btn ds-btn--secondary" disabled>Disabled</button>
+      </div>
+      <div class="btn-group">
+        <div class="btn-group-label">Tertiary</div>
+        <button class="ds-btn ds-btn--tertiary">Cancel</button>
+        <button class="ds-btn ds-btn--tertiary"><span class="mi" style="font-size:16px">edit</span>Edit</button>
+        <button class="ds-btn ds-btn--tertiary" disabled>Disabled</button>
+      </div>
+      <div class="btn-group">
+        <div class="btn-group-label">Destructive</div>
+        <button class="ds-btn ds-btn--destructive">Delete</button>
+        <button class="ds-btn ds-btn--destructive"><span class="mi" style="font-size:16px">delete</span>Remove</button>
+        <button class="ds-btn ds-btn--destructive" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="subsection-title">Variants — Dark Background</div>
+    <div style="background:var(--surface-fill-neutral-900);padding:24px;border-radius:var(--corner-radius-12)">
+      <div class="btn-grid">
+        <div class="btn-group">
+          <div class="btn-group-label" style="color:#fff;opacity:0.5">Special Primary</div>
+          <button class="ds-btn ds-btn--special-primary">Get Started</button>
+          <button class="ds-btn ds-btn--special-primary" disabled>Disabled</button>
+        </div>
+        <div class="btn-group">
+          <div class="btn-group-label" style="color:#fff;opacity:0.5">Special Secondary</div>
+          <button class="ds-btn ds-btn--special-secondary">Learn More</button>
+          <button class="ds-btn ds-btn--special-secondary" disabled>Disabled</button>
+        </div>
+        <div class="btn-group">
+          <div class="btn-group-label" style="color:#fff;opacity:0.5">Tertiary Inverse</div>
+          <button class="ds-btn" style="color:#fff;background:transparent">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ ICON BUTTONS -->
+  <section id="icon-buttons">
+    <div class="section-title">Icon Buttons</div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div>
+        <div class="btn-group-label" style="margin-bottom:8px">Default</div>
+        <div style="display:flex;gap:8px">
+          <button class="icon-btn icon-btn--sm"><span class="mi" style="font-size:16px">edit</span></button>
+          <button class="icon-btn"><span class="mi">more_vert</span></button>
+          <button class="icon-btn icon-btn--lg"><span class="mi" style="font-size:24px">settings</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="btn-group-label" style="margin-bottom:8px">Filled</div>
+        <div style="display:flex;gap:8px">
+          <button class="icon-btn icon-btn--filled icon-btn--sm"><span class="mi" style="font-size:16px">add</span></button>
+          <button class="icon-btn icon-btn--filled"><span class="mi">add</span></button>
+          <button class="icon-btn icon-btn--filled icon-btn--lg"><span class="mi" style="font-size:24px">add</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="btn-group-label" style="margin-bottom:8px">Outlined</div>
+        <div style="display:flex;gap:8px">
+          <button class="icon-btn icon-btn--outlined icon-btn--sm"><span class="mi" style="font-size:16px">filter_list</span></button>
+          <button class="icon-btn icon-btn--outlined"><span class="mi">filter_list</span></button>
+          <button class="icon-btn icon-btn--outlined icon-btn--lg"><span class="mi" style="font-size:24px">filter_list</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ BADGES -->
+  <section id="badges">
+    <div class="section-title">Badges & Chips</div>
+    <div class="badge-grid">
+      <span class="badge badge--primary">Primary</span>
+      <span class="badge badge--success"><span class="mi mi-fill" style="font-size:12px;color:var(--color-success-500)">check_circle</span>Success</span>
+      <span class="badge badge--error"><span class="mi mi-fill" style="font-size:12px;color:var(--color-error-400)">cancel</span>Error</span>
+      <span class="badge badge--warning"><span class="mi mi-fill" style="font-size:12px;color:var(--color-warning-400)">warning</span>Warning</span>
+      <span class="badge badge--info"><span class="mi mi-fill" style="font-size:12px;color:var(--color-information-400)">info</span>Info</span>
+      <span class="badge badge--neutral">Neutral</span>
+      <span class="badge badge--magenta">AI</span>
+      <span class="badge badge--orange">New</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ TOOLTIPS -->
+  <section id="tooltips">
+    <div class="section-title">Tooltips</div>
+    <div class="tooltip-demo">
+      <div class="tooltip-wrap">
+        <button class="ds-btn ds-btn--secondary">Hover me (top)</button>
+        <div class="tooltip">This is a tooltip</div>
+      </div>
+      <div class="tooltip-wrap">
+        <button class="ds-btn ds-btn--secondary">Hover me (bottom)</button>
+        <div class="tooltip bottom">Tooltip below</div>
+      </div>
+      <div class="tooltip-wrap">
+        <button class="icon-btn"><span class="mi">info</span></button>
+        <div class="tooltip">More information</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ ICONS -->
+  <section id="icons">
+    <div class="section-title">Icons — Material Symbols Rounded</div>
+    <p style="font-size:12px;color:var(--text-tertiary);margin-bottom:16px">Click any icon to copy its ligature name. Uses the <code style="font-size:11px;background:var(--surface-fill-cool-neutral-300);padding:1px 4px;border-radius:3px">Material Symbols Rounded</code> font.</p>
+
+    <div class="subsection-title">Navigation & Actions</div>
+    <div class="icon-gallery" id="icons-nav"></div>
+
+    <div class="subsection-title">Content & Files</div>
+    <div class="icon-gallery" id="icons-content"></div>
+
+    <div class="subsection-title">Status & Feedback</div>
+    <div class="icon-gallery" id="icons-status"></div>
+
+    <div class="subsection-title">Data & Analytics</div>
+    <div class="icon-gallery" id="icons-data"></div>
+
+    <div class="subsection-title">Communication</div>
+    <div class="icon-gallery" id="icons-comm"></div>
+
+    <div class="subsection-title">People & Org</div>
+    <div class="icon-gallery" id="icons-people"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ TOKEN REFERENCE -->
+  <section id="token-ref">
+    <div class="section-title">Token Reference — All Tokens</div>
+    <p style="font-size:12px;color:var(--text-tertiary);margin-bottom:16px">Every CSS custom property from <code style="font-family:monospace;background:var(--surface-fill-cool-neutral-300);padding:1px 5px;border-radius:3px">tokens.css</code>. Click any row to copy the token name.</p>
+
+    <!-- Search -->
+    <div style="position:relative;margin-bottom:20px;max-width:400px">
+      <span class="mi" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-tertiary);font-size:18px">search</span>
+      <input id="token-search" type="text" placeholder="Filter tokens…" oninput="filterTokens(this.value)"
+        style="width:100%;padding:9px 12px 9px 36px;border:1px solid var(--surface-fill-cool-neutral-600);border-radius:var(--corner-radius-8);font-family:var(--font-family);font-size:13px;color:var(--text-primary);background:var(--surface-fill-neutral-0);outline:none">
+    </div>
+
+    <!-- Tab bar -->
+    <div id="token-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px"></div>
+
+    <!-- Token tables injected by JS -->
+    <div id="token-tables"></div>
+  </section>
+
+</main>
+
+<!-- toast -->
+<div class="copied-toast" id="toast">Copied!</div>
+
+<script>
+// ── COPY SWATCH ────────────────────────────────────────────────────────
+function copySwatch(value, tokenName) {
+  navigator.clipboard.writeText(tokenName || value)
+  showToast('Copied ' + (tokenName || value))
+}
+function showToast(msg) {
+  const t = document.getElementById('toast')
+  t.textContent = msg; t.classList.add('show')
+  setTimeout(() => t.classList.remove('show'), 1600)
+}
+
+// ── ACTIVE NAV ─────────────────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]')
+const links = document.querySelectorAll('.sidebar-nav a')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id))
+    }
+  })
+}, { rootMargin: '-20% 0px -70% 0px' })
+sections.forEach(s => observer.observe(s))
+
+// ── SPACING ROWS ───────────────────────────────────────────────────────
+const spacingValues = [4,8,12,16,20,24,32,40,48,56,64,80]
+const spacingContainer = document.getElementById('spacing-rows')
+spacingValues.forEach(v => {
+  const row = document.createElement('div')
+  row.className = 'spacing-row'
+  row.innerHTML = `
+    <div class="spacing-label">${v}px</div>
+    <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:${Math.min(v*2.5,200)}px"></div></div>
+    <div class="spacing-token">--spacing-space-${v}</div>`
+  spacingContainer.appendChild(row)
+})
+
+// ── RADIUS GRID ────────────────────────────────────────────────────────
+const radii = [0,2,4,8,12,16,20,24,40,60]
+const radiusContainer = document.getElementById('radius-grid')
+radii.forEach(r => {
+  const card = document.createElement('div')
+  card.className = 'radius-card'
+  card.innerHTML = `
+    <div class="radius-preview" style="border-radius:${r}px"></div>
+    <div class="radius-label">${r}px</div>
+    <div class="radius-value">--corner-radius-${r}</div>`
+  radiusContainer.appendChild(card)
+})
+const pillCard = document.createElement('div')
+pillCard.className = 'radius-card'
+pillCard.innerHTML = `<div class="radius-preview" style="border-radius:100px;width:80px;height:32px"></div><div class="radius-label">100px</div><div class="radius-value">--corner-radius-100</div>`
+radiusContainer.appendChild(pillCard)
+
+// ── ICONS ──────────────────────────────────────────────────────────────
+const iconSets = {
+  'icons-nav': [
+    'home','dashboard','menu','close','arrow_back','arrow_forward',
+    'expand_more','expand_less','chevron_right','chevron_left',
+    'search','filter_list','sort','view_sidebar','settings',
+    'tune','open_in_new','launch','logout','login',
+  ],
+  'icons-content': [
+    'description','folder','folder_open','upload_file','download',
+    'attach_file','image','video_file','add','edit','delete',
+    'content_copy','save','bookmark','bookmark_border','star',
+    'star_border','label','tag','format_list_bulleted','grid_view',
+  ],
+  'icons-status': [
+    'check_circle','cancel','warning','info','error',
+    'pending','schedule','lock','lock_open','visibility',
+    'visibility_off','verified','new_releases','priority_high','block',
+    'done','done_all','close','radio_button_unchecked','check_box',
+  ],
+  'icons-data': [
+    'bar_chart','pie_chart','show_chart','trending_up','trending_down',
+    'analytics','insights','table_chart','assessment','leaderboard',
+    'speed','data_usage','query_stats','timeline','monitoring',
+    'calculate','functions','numbers','percent','currency_exchange',
+  ],
+  'icons-comm': [
+    'mail','mail_outline','send','reply','forum',
+    'chat_bubble','notifications','notifications_none','notification_add',
+    'campaign','announcement','message','contact_support','help',
+    'help_outline','question_mark','feedback','rate_review','reviews','comment',
+  ],
+  'icons-people': [
+    'person','people','group','groups','manage_accounts',
+    'account_circle','badge','work','business_center','corporate_fare',
+    'handshake','volunteer_activism','diversity_3','supervisor_account',
+    'person_add','person_remove','how_to_reg','emoji_events','school','work_history',
+  ],
+}
+
+Object.entries(iconSets).forEach(([containerId, icons]) => {
+  const container = document.getElementById(containerId)
+  icons.forEach(name => {
+    const tile = document.createElement('div')
+    tile.className = 'icon-tile'
+    tile.title = name
+    tile.innerHTML = `<span class="mi">${name}</span><span class="icon-name">${name}</span>`
+    tile.onclick = () => { navigator.clipboard.writeText(name); showToast('Copied: ' + name) }
+    container.appendChild(tile)
+  })
+})
+
+// ── TOKEN TABLES ───────────────────────────────────────────────────────
+function buildTokenRows(containerId, tokens) {
+  const tbody = document.getElementById(containerId)
+  tokens.forEach(([name, value]) => {
+    const tr = document.createElement('tr')
+    const isColor = value.startsWith('#') || value.startsWith('rgb')
+    tr.innerHTML = `
+      <td><span class="token-name">${name}</span></td>
+      <td><span class="token-value">${value}</span></td>
+      <td>${isColor ? `<span class="token-swatch" style="background:${value}"></span>` : ''}</td>`
+    tbody.appendChild(tr)
+  })
+}
+
+// ── ALL TOKEN DATA ─────────────────────────────────────────────────────
+const TOKEN_CATEGORIES = [
+  {
+    id: 'global-primary', label: 'Global — Primary & Brand',
+    tokens: [
+      ['--color-primary-100','#007680'],['--color-primary-200','#1E5C5F'],
+      ['--color-brand-100','#F4F9F9'],['--color-brand-200','#EAF2F3'],
+      ['--color-brand-300','#E2EEEF'],['--color-brand-400','#C8E1E4'],
+      ['--color-brand-500','#63B7B7'],['--color-brand-600','#004F59'],
+      ['--color-transparent-0','rgba(255,255,255,0)'],['--color-transparent-100','rgba(255,255,255,0.1)'],
+      ['--color-transparent-200','rgba(255,255,255,0.3)'],['--color-transparent-300','rgba(255,255,255,0.56)'],
+    ]
+  },
+  {
+    id: 'global-neutral', label: 'Global — Neutral',
+    tokens: [
+      ['--color-neutral-0','#FFFFFF'],['--color-neutral-100','#F9F9F9'],
+      ['--color-neutral-200','#F1F1F1'],['--color-neutral-300','#EBEAEA'],
+      ['--color-neutral-400','#BDBDBD'],['--color-neutral-500','#8F8F8F'],
+      ['--color-neutral-600','#747474'],['--color-neutral-700','#5E5E5E'],
+      ['--color-neutral-800','#3D3D3D'],['--color-neutral-900','#282828'],
+      ['--color-cool-neutral-100','#F7F8F8'],['--color-cool-neutral-200','#F8FAFA'],
+      ['--color-cool-neutral-300','#F3F6F6'],['--color-cool-neutral-400','#EFF3F3'],
+      ['--color-cool-neutral-500','#EAEEEE'],['--color-cool-neutral-600','#DFE7E8'],
+      ['--color-cool-neutral-700','#D7E0E0'],['--color-cool-neutral-800','#B7C6C8'],
+    ]
+  },
+  {
+    id: 'global-secondary', label: 'Global — Secondary',
+    tokens: [
+      ['--color-secondary-100','#C4D600'],['--color-secondary-200','#9DD4CF'],
+      ['--color-secondary-300','#4DC5B4'],['--color-secondary-400','#009A44'],
+      ['--color-secondary-500','#046A38'],
+    ]
+  },
+  {
+    id: 'global-semantic', label: 'Global — Semantic States',
+    tokens: [
+      ['--color-error-100','#FFF4F3'],['--color-error-200','#F6EBEB'],
+      ['--color-error-300','#F2B8B5'],['--color-error-400','#DA291C'],['--color-error-500','#B71C13'],
+      ['--color-success-100','#EFFBF2'],['--color-success-200','#DFF3E3'],
+      ['--color-success-300','#C9E4CF'],['--color-success-400','#009A44'],['--color-success-500','#1D7E33'],
+      ['--color-warning-100','#FFF7EC'],['--color-warning-200','#F8E8CC'],
+      ['--color-warning-300','#FFCD00'],['--color-warning-400','#936414'],
+      ['--color-information-100','#EFF3FC'],['--color-information-200','#DEE5F6'],
+      ['--color-information-300','#325FF1'],['--color-information-400','#054EB3'],
+    ]
+  },
+  {
+    id: 'global-extended', label: 'Global — Extended Palette',
+    tokens: [
+      ['--color-magenta-100','#FBF9FB'],['--color-magenta-200','#F0E9EE'],
+      ['--color-magenta-300','#EDDDE7'],['--color-magenta-400','#C871AE'],['--color-magenta-500','#C03A97'],
+      ['--color-orange-100','#FDFBF7'],['--color-orange-200','#F7F5F1'],
+      ['--color-orange-300','#F5E2CE'],['--color-orange-400','#FBB160'],['--color-orange-500','#FD8503'],
+      ['--color-indigo-100','#F3F5F9'],['--color-indigo-200','#B3C5E5'],
+      ['--color-indigo-300','#B2BBC8'],['--color-indigo-400','#85A8E4'],
+      ['--color-indigo-500','#4672BE'],['--color-indigo-600','#5A6C93'],
+      ['--color-turquoise-100','#F7FAFA'],['--color-turquoise-200','#D7EEEE'],
+      ['--color-turquoise-300','#C3D9DB'],['--color-turquoise-400','#80BABF'],
+      ['--color-turquoise-500','#00ABAB'],['--color-turquoise-600','#22747B'],['--color-turquoise-700','#0A4448'],
+      ['--color-voilet-100','#FCFAFF'],['--color-voilet-200','#F1ECFE'],
+      ['--color-voilet-300','#E5DCFF'],['--color-voilet-400','#A289E5'],
+      ['--color-voilet-500','#9E7BE3'],['--color-voilet-600','#734ED8'],
+      ['--color-blue-100','#F5F9FC'],['--color-blue-200','#CFE2EF'],
+      ['--color-blue-300','#9DD2ED'],['--color-blue-400','#3EB9EB'],['--color-blue-500','#05A5E6'],
+      ['--color-light-green-100','#FAFBF7'],['--color-light-green-200','#F5F7F1'],
+      ['--color-light-green-300','#FAFFF7'],['--color-light-green-400','#E9F1E5'],
+      ['--color-light-green-500','#DEE4D2'],['--color-light-green-600','#B2CA86'],['--color-light-green-700','#86BC25'],
+      ['--color-rewards-100','#FBFAF7'],['--color-rewards-200','#F6E6B2'],
+      ['--color-rewards-300','#FBBE22'],['--color-rewards-400','#E86301'],
+      ['--color-rewards-500','#CB6D07'],['--color-rewards-600','#69492D'],
+      ['--color-accent-colour-1-100','#D3DEF1'],['--color-accent-colour-1-200','#E6E0F9'],
+      ['--color-accent-colour-2-100','#D6F6E6'],['--color-accent-colour-2-200','#E5F4E1'],
+      ['--color-accent-colour-3-100','#D7EAED'],['--color-accent-colour-3-200','#D2EDF3'],
+      ['--color-accent-colour-4-100','#D1DCE2'],['--color-accent-colour-4-200','#A3AFBA'],
+      ['--color-accent-colour-5-100','#BF8F6C'],['--color-accent-colour-5-200','#FFE0C6'],
+      ['--color-accent-colour-6-100','#D97C7C'],['--color-accent-colour-6-200','#E3A0A0'],
+    ]
+  },
+  {
+    id: 'semantic-text', label: 'Semantic — Text',
+    tokens: [
+      ['--text-primary','#282828'],['--text-secondary','#3D3D3D'],
+      ['--text-tertiary','#5E5E5E'],['--text-disabled','#747474'],['--text-hint','#8F8F8F'],
+      ['--text-action-default','#007680'],['--text-action-active','#1E5C5F'],
+      ['--text-action-hover','#004F59'],['--text-action-inverse','#FFFFFF'],
+      ['--text-state-error','#DA291C'],['--text-state-success','#1D7E33'],
+      ['--text-state-warning','#936414'],['--text-state-information','#325FF1'],
+      ['--text-ai','#046A38'],['--text-tag-1','#5A6C93'],['--text-tag-2','#69492D'],
+      ['--text-monogram-1','#936414'],['--text-monogram-2','#1D7E33'],
+      ['--text-monogram-3','#007680'],['--text-monogram-4','#734ED8'],
+      ['--text-date','#B7C6C8'],['--text-overdue','#F8E8CC'],
+    ]
+  },
+  {
+    id: 'semantic-icon', label: 'Semantic — Icon',
+    tokens: [
+      ['--icon-primary','#282828'],['--icon-secondary','#3D3D3D'],
+      ['--icon-tertiary','#5E5E5E'],['--icon-disabled','#747474'],['--icon-hint','#8F8F8F'],
+      ['--icon-action-default','#007680'],['--icon-action-active','#1E5C5F'],
+      ['--icon-action-hover','#004F59'],['--icon-action-inverse','#FFFFFF'],
+      ['--icon-state-error','#DA291C'],['--icon-state-success','#1D7E33'],
+      ['--icon-state-warning','#936414'],['--icon-state-information','#325FF1'],
+      ['--icon-ai','#C03A97'],['--icon-gen-ai','#C871AE'],
+      ['--icon-tag-1','#5A6C93'],['--icon-tag-2','#69492D'],
+      ['--icon-date','#B7C6C8'],['--icon-overdue','#F8E8CC'],
+    ]
+  },
+  {
+    id: 'semantic-stroke', label: 'Semantic — Stroke',
+    tokens: [
+      ['--stroke-primary-100','#007680'],['--stroke-primary-200','#1E5C5F'],
+      ['--stroke-brand-200','#EAF2F3'],['--stroke-brand-300','#E2EEEF'],['--stroke-brand-400','#C8E1E4'],
+      ['--stroke-neutral-0','#FFFFFF'],['--stroke-neutral-100','#F9F9F9'],
+      ['--stroke-neutral-200','#F1F1F1'],['--stroke-neutral-300','#EBEAEA'],
+      ['--stroke-neutral-400','#BDBDBD'],['--stroke-neutral-500','#8F8F8F'],['--stroke-neutral-900','#282828'],
+      ['--stroke-cool-neutral-300','#F3F6F6'],['--stroke-cool-neutral-500','#EAEEEE'],
+      ['--stroke-cool-neutral-600','#DFE7E8'],['--stroke-cool-neutral-700','#D7E0E0'],
+      ['--stroke-cool-neutral-800','#B7C6C8'],
+      ['--stroke-success-300','#C9E4CF'],['--stroke-error-200','#F6EBEB'],
+      ['--stroke-error-300','#F2B8B5'],['--stroke-warning-200','#F8E8CC'],
+      ['--stroke-info-200','#DEE5F6'],['--stroke-utility-magenta-300','#EDDDE7'],
+      ['--stroke-utility-turquoise-300','#C3D9DB'],['--stroke-utility-green-500','#DEE4D2'],
+      ['--stroke-rewards-200','#F6E6B2'],
+    ]
+  },
+  {
+    id: 'semantic-surface', label: 'Semantic — Surface Fill',
+    tokens: [
+      ['--surface-fill-transparent-100','rgba(255,255,255,0.1)'],
+      ['--surface-fill-transparent-200','rgba(255,255,255,0.3)'],
+      ['--surface-fill-transparent-300','rgba(255,255,255,0.56)'],
+      ['--surface-fill-primary-100','#007680'],['--surface-fill-primary-200','#1E5C5F'],
+      ['--surface-fill-brand-100','#F4F9F9'],['--surface-fill-brand-200','#EAF2F3'],
+      ['--surface-fill-brand-300','#E2EEEF'],['--surface-fill-brand-400','#C8E1E4'],
+      ['--surface-fill-brand-600','#004F59'],
+      ['--surface-fill-neutral-0','#FFFFFF'],['--surface-fill-neutral-100','#F9F9F9'],
+      ['--surface-fill-neutral-200','#F1F1F1'],['--surface-fill-neutral-300','#EBEAEA'],
+      ['--surface-fill-neutral-400','#BDBDBD'],['--surface-fill-neutral-700','#5E5E5E'],
+      ['--surface-fill-neutral-800','#3D3D3D'],['--surface-fill-neutral-900','#282828'],
+      ['--surface-fill-cool-neutral-100','#F7F8F8'],['--surface-fill-cool-neutral-200','#F8FAFA'],
+      ['--surface-fill-cool-neutral-300','#F3F6F6'],['--surface-fill-cool-neutral-400','#EFF3F3'],
+      ['--surface-fill-cool-neutral-500','#EAEEEE'],['--surface-fill-cool-neutral-600','#DFE7E8'],
+      ['--surface-fill-cool-neutral-800','#B7C6C8'],
+      ['--surface-fill-information-200','#DEE5F6'],['--surface-fill-magenta-300','#EDDDE7'],
+      ['--surface-fill-orange-300','#F5E2CE'],['--surface-fill-turquoise-100','#F7FAFA'],
+      ['--surface-fill-turquoise-200','#D7EEEE'],['--surface-fill-turquoise-400','#80BABF'],
+      ['--surface-fill-turquoise-600','#22747B'],['--surface-fill-indigo-200','#B3C5E5'],
+      ['--surface-fill-green-500','#DEE4D2'],['--surface-fill-violet-100','#FCFAFF'],
+      ['--surface-fill-violet-300','#E5DCFF'],['--surface-fill-blue-200','#CFE2EF'],
+      ['--surface-fill-rewards-100','#FBFAF7'],['--surface-fill-rewards-200','#F6E6B2'],
+      ['--surface-fill-rewards-500','#CB6D07'],
+    ]
+  },
+  {
+    id: 'semantic-bg', label: 'Semantic — Background Fill',
+    tokens: [
+      ['--bg-fill-section','#F3F6F6'],['--bg-fill-navigation','#EAEEEE'],
+      ['--bg-fill-success-100','#EFFBF2'],['--bg-fill-success-200','#DFF3E3'],['--bg-fill-success-400','#009A44'],
+      ['--bg-fill-info-100','#EFF3FC'],['--bg-fill-info-200','#DEE5F6'],['--bg-fill-info-400','#054EB3'],
+      ['--bg-fill-error-100','#FFF4F3'],['--bg-fill-error-200','#F6EBEB'],['--bg-fill-error-400','#DA291C'],
+      ['--bg-fill-warning-100','#FFF7EC'],['--bg-fill-warning-200','#F8E8CC'],['--bg-fill-warning-300','#FFCD00'],
+      ['--bg-avatar-4','#E5DCFF'],['--bg-fill-magenta-100','#FBF9FB'],
+      ['--bg-fill-orange-200','#F7F5F1'],['--bg-fill-orange-500','#FD8503'],
+      ['--bg-fill-turquoise-100','#F7FAFA'],['--bg-fill-green-100','#FAFBF7'],
+      ['--bg-fill-green-200','#F5F7F1'],['--bg-fill-indigo-200','#F3F5F9'],
+      ['--bg-fill-voilet-600','#734ED8'],['--bg-fill-blue-100','#F5F9FC'],
+      ['--bg-fill-rewards-100','#FBFAF7'],
+    ]
+  },
+  {
+    id: 'gradients', label: 'Gradients',
+    tokens: [
+      ['--ai-gradient-ai-gradient-0%','#00ABAB'],['--ai-gradient-ai-gradient-25%','#05A5E6'],
+      ['--ai-gradient-ai-gradient-50%','#C03A97'],['--ai-gradient-ai-gradient-70%','#FD8503'],
+      ['--ai-gradient-ai-gradient-100%','#86BC25'],
+      ['--ai-gradients-surface-fill-ai-gradient-0%','#9DD4CF'],
+      ['--ai-gradients-surface-fill-ai-gradient-51%','#4DC5B4'],
+      ['--ai-gradients-surface-fill-ai-gradient-50%','#009A44'],
+      ['--ai-gradients-stroke-light-ai-gradient-27%','#4DC5B4'],
+      ['--ai-gradients-stroke-light-ai-gradient-100%','#009A44'],
+      ['--magenta-icon-gradient-0%','#C03A97'],['--magenta-icon-gradient-100%','#EDDDE7'],
+      ['--magenta-card-bg-0%','#C03A97'],['--magenta-card-bg-100%','rgba(255,255,255,0)'],
+      ['--orange-icon-gradient-0%','#FD8503'],['--orange-icon-gradient-100%','#FBB160'],
+      ['--orange-card-bg-0%','#FD8503'],['--orange-card-bg-100%','rgba(255,255,255,0)'],
+      ['--indigo-icon-gradient-0%','#4672BE'],['--indigo-icon-gradient-100%','#85A8E4'],
+      ['--turquoise-icon-gradient-0%','#00ABAB'],['--turquoise-icon-gradient-100%','#80BABF'],
+      ['--light-green-icon-gradinet-0%','#86BC25'],['--light-green-icon-gradient-100%','#B2CA86'],
+      ['--violet-icon-gradient-0%','#734ED8'],['--violet-icon-gradient-100%','#A289E5'],
+      ['--blue-icon-gradient-0%','#05A5E6'],['--blue-icon-gradient-100%','#9DD2ED'],
+      ['--rewards-gradients-chip-gradient-0%','#FBBE22'],['--rewards-gradients-chip-gradient-100%','#CB6D07'],
+      ['--rewards-gradients-card-bg-0%','#F6E6B2'],['--rewards-gradients-card-bg-100%','rgba(255,255,255,0)'],
+      ['--rewards-gradients-text-gradient-1-0%','#FBBE22'],['--rewards-gradients-text-gradient-1-100%','#E86301'],
+      ['--other-gradients-ctu-gradient-0%','#D3DEF1'],['--other-gradients-ctu-gradient-100%','#E6E0F9'],
+      ['--other-gradients-cts-gradient-0%','#D6F6E6'],['--other-gradients-cts-gradient-100%','#E5F4E1'],
+      ['--other-gradients-project-gradient-0%','#D7EAED'],['--other-gradients-project-gradient-100%','#D2EDF3'],
+      ['--other-gradients-manual-gradient-0%','#D1DCE2'],['--other-gradients-manual-gradient-100%','#A3AFBA'],
+      ['--other-gradients-agentic-gradient-0%','#BF8F6C'],['--other-gradients-agentic-gradient-100%','#FFE0C6'],
+      ['--other-gradients-liked-gradient-0%','#D97C7C'],['--other-gradients-liked-gradient-100%','#E3A0A0'],
+      ['--background-gradients-base-gradient-0%','#F7F8F8'],['--background-gradients-base-gradient-100%','#F8FAFA'],
+      ['--background-gradients-menu-gradient-0%','#63B7B7'],['--background-gradients-menu-gradient-100%','rgba(255,255,255,0)'],
+    ]
+  },
+  {
+    id: 'shadow-colors', label: 'Shadow Colors',
+    tokens: [
+      ['--shadow-color-drop-shadow-color-1','rgba(114,123,156,0.25)'],
+      ['--shadow-color-drop-shadow-color-2','rgba(0,0,0,0.1)'],
+      ['--shadow-color-inner-shadow-color-1','rgba(88,88,88,0.06)'],
+      ['--shadow-color-inner-shadow-color-2','rgba(151,159,177,0.14)'],
+      ['--shadow-color-inner-shadow-color-3','rgba(217,221,232,0.18)'],
+      ['--shadow-color-inner-shadow-color-4','#CDC9E8'],
+      ['--shadow-color-inner-shadow-color-5','#BFD8DC'],
+      ['--shadow-color-inner-shadow-color-6','#C3D8C9'],
+      ['--shadow-color-inner-shadow-color-7','#F6F8FF'],
+      ['--shadow-color-inner-shadow-color-8','#DDFFF1'],
+      ['--shadow-color-inner-shadow-color-9','#ECC5DA'],
+    ]
+  },
+  {
+    id: 'shadow-numbers', label: 'Shadow Numbers',
+    tokens: [
+      ['--shadow-shadow-offset-0','0px'],['--shadow-shadow-offset-1','1px'],
+      ['--shadow-shadow-offset-2','2px'],['--shadow-shadow-offset-4','4px'],
+      ['--shadow-shadow-offset-10','-10px'],
+      ['--shadow-shadow-blur-2','2px'],['--shadow-shadow-blur-5','5px'],
+      ['--shadow-shadow-blur-8','8px'],['--shadow-shadow-blur-12','12px'],
+      ['--shadow-shadow-blur-20','20px'],['--shadow-shadow-blur-40','40px'],
+      ['--shadow-shadow-blur-72','72px'],['--shadow-shadow-blur-80','80px'],
+      ['--shadow-layer-blur-40','40px'],['--shadow-layer-blur-56','56px'],
+    ]
+  },
+  {
+    id: 'spacing', label: 'Spacing',
+    tokens: [
+      ['--spacing-space-0','0px'],['--spacing-space-1','1px'],['--spacing-space-2','2px'],
+      ['--spacing-space-4','4px'],['--spacing-space-8','8px'],['--spacing-space-12','12px'],
+      ['--spacing-space-16','16px'],['--spacing-space-20','20px'],['--spacing-space-24','24px'],
+      ['--spacing-space-28','28px'],['--spacing-space-32','32px'],['--spacing-space-40','40px'],
+      ['--spacing-space-44','44px'],['--spacing-space-48','48px'],['--spacing-space-52','52px'],
+      ['--spacing-space-56','56px'],['--spacing-space-60','60px'],['--spacing-space-64','64px'],
+      ['--spacing-space-72','72px'],['--spacing-space-80','80px'],
+      ['--spacing-space-100','100px'],['--spacing-space-168','168px'],['--spacing-space-172','172px'],
+    ]
+  },
+  {
+    id: 'radii-padding', label: 'Radii, Padding & Margin',
+    tokens: [
+      ['--corner-radius-0','0px'],['--corner-radius-2','2px'],['--corner-radius-4','4px'],
+      ['--corner-radius-8','8px'],['--corner-radius-12','12px'],['--corner-radius-16','16px'],
+      ['--corner-radius-20','20px'],['--corner-radius-24','24px'],['--corner-radius-40','40px'],
+      ['--corner-radius-60','60px'],['--corner-radius-100','100px'],
+      ['--padding-0','0px'],['--padding-2','2px'],['--padding-4','4px'],['--padding-8','8px'],
+      ['--padding-12','12px'],['--padding-16','16px'],['--padding-20','20px'],
+      ['--padding-24','24px'],['--padding-28','28px'],['--padding-32','32px'],
+      ['--padding-40','40px'],['--padding-44','44px'],['--padding-48','48px'],
+      ['--padding-56','56px'],['--padding-64','64px'],['--padding-80','80px'],
+      ['--margin-0','0px'],['--margin-2','2px'],['--margin-4','4px'],['--margin-8','8px'],
+      ['--margin-12','12px'],['--margin-16','16px'],['--margin-20','20px'],
+      ['--margin-24','24px'],['--margin-32','32px'],['--margin-40','40px'],
+      ['--margin-48','48px'],['--margin-52','52px'],['--margin-56','56px'],
+      ['--margin-60','60px'],['--margin-64','64px'],['--margin-72','72px'],
+      ['--stroke-width-0','0px'],['--stroke-width-1','1px'],['--stroke-width-2','2px'],
+      ['--stroke-width-4','4px'],['--stroke-width-8','8px'],['--stroke-width-12','12px'],
+    ]
+  },
+  {
+    id: 'typography', label: 'Typography',
+    tokens: [
+      ['--font-family','"Open Sans", sans-serif'],
+      ['--font-weight-light','300'],['--font-weight-regular','400'],
+      ['--font-weight-semibold','600'],['--font-weight-bold','700'],
+      ['--font-size-d1','36px'],['--line-height-d1','44px'],
+      ['--font-size-d2','32px'],['--line-height-d2','40px'],
+      ['--font-size-h1','28px'],['--line-height-h1','40px'],
+      ['--font-size-h2','24px'],['--line-height-h2','32px'],
+      ['--font-size-h3','20px'],['--line-height-h3','28px'],
+      ['--font-size-h4','18px'],['--line-height-h4','26px'],
+      ['--font-size-bl','16px'],['--line-height-bl','24px'],
+      ['--font-size-br','14px'],['--line-height-br','24px'],
+      ['--font-size-bs','12px'],['--line-height-bs','20px'],
+      ['--font-size-bxs','10px'],['--line-height-bxs','18px'],
+      ['--font-size-titleallcaps','14px'],['--line-height-titleallcaps','20px'],
+    ]
+  },
+];
+
+// ── BUILD TOKEN TABLES ─────────────────────────────────────────────────
+function isColor(v) {
+  return v.startsWith('#') || v.startsWith('rgb') || v.startsWith('hsl')
+}
+
+const tabBar = document.getElementById('token-tabs')
+const tablesContainer = document.getElementById('token-tables')
+
+TOKEN_CATEGORIES.forEach((cat, i) => {
+  // Tab button
+  const btn = document.createElement('button')
+  btn.textContent = cat.label
+  btn.setAttribute('data-cat', cat.id)
+  btn.style.cssText = `padding:6px 12px;border-radius:var(--corner-radius-100);border:1px solid var(--surface-fill-cool-neutral-600);background:var(--surface-fill-neutral-0);font-family:var(--font-family);font-size:12px;font-weight:600;color:var(--text-secondary);cursor:pointer;transition:all 120ms ease`
+  btn.onclick = () => {
+    document.querySelectorAll('[data-cat]').forEach(b => {
+      b.style.background = 'var(--surface-fill-neutral-0)'
+      b.style.color = 'var(--text-secondary)'
+      b.style.borderColor = 'var(--surface-fill-cool-neutral-600)'
+    })
+    btn.style.background = 'var(--color-primary-100)'
+    btn.style.color = '#fff'
+    btn.style.borderColor = 'var(--color-primary-100)'
+    document.querySelectorAll('.token-section').forEach(s => {
+      s.style.display = s.getAttribute('data-section') === cat.id ? '' : 'none'
+    })
+  }
+  tabBar.appendChild(btn)
+
+  // Table section
+  const section = document.createElement('div')
+  section.className = 'token-section'
+  section.setAttribute('data-section', cat.id)
+  section.style.display = i === 0 ? '' : 'none'
+  section.innerHTML = `
+    <div class="subsection-title">${cat.label} <span style="font-size:10px;font-weight:400;color:var(--text-hint)">(${cat.tokens.length} tokens)</span></div>
+    <table class="token-table">
+      <thead><tr><th></th><th>Token</th><th>Value</th></tr></thead>
+      <tbody>${cat.tokens.map(([name, value]) => `
+        <tr style="cursor:pointer" onclick="navigator.clipboard.writeText('${name}');showToast('Copied: ${name}')">
+          <td style="width:28px">${isColor(value) ? `<span class="token-swatch" style="background:${value}"></span>` : `<span style="font-family:'Material Symbols Rounded';font-size:14px;color:var(--text-tertiary)">${value.includes('px') ? 'straighten' : 'format_size'}</span>`}</td>
+          <td><span class="token-name">${name}</span></td>
+          <td><span class="token-value">${value}</span></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`
+  tablesContainer.appendChild(section)
+})
+
+// Activate first tab
+tabBar.firstChild.click()
+
+// ── TOKEN FILTER ───────────────────────────────────────────────────────
+function filterTokens(query) {
+  const q = query.toLowerCase().trim()
+  document.querySelectorAll('.token-section').forEach(sec => {
+    let visibleCount = 0
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const name = row.querySelector('.token-name')?.textContent || ''
+      const val  = row.querySelector('.token-value')?.textContent || ''
+      const show = !q || name.toLowerCase().includes(q) || val.toLowerCase().includes(q)
+      row.style.display = show ? '' : 'none'
+      if (show) visibleCount++
+    })
+    // Show all sections when filtering
+    sec.style.display = (q && visibleCount > 0) || !q ? '' : 'none'
+    const countEl = sec.querySelector('.subsection-title span')
+    if (countEl) countEl.textContent = q ? `(${visibleCount} matches)` : `(${sec.querySelectorAll('tbody tr').length} tokens)`
+  })
+  // Reset tab highlight when filtering
+  if (q) {
+    document.querySelectorAll('[data-cat]').forEach(b => {
+      b.style.background = 'var(--surface-fill-neutral-0)'
+      b.style.color = 'var(--text-secondary)'
+      b.style.borderColor = 'var(--surface-fill-cool-neutral-600)'
+    })
+  }
+}
+</script>
+</body>
+</html>

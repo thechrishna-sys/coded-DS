@@ -1,0 +1,24 @@
+{
+  "name": "design-system",
+  "private": true,
+  "packageManager": "npm@11.11.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "figma:sync": "node scripts/figma-sync.js",
+    "icons:sync": "node scripts/sync-material-symbols.js",
+    "tokens:transform": "node scripts/transform-tokens.js",
+    "assets:copy": "node scripts/copy-assets.js",
+    "dev": "npm run assets:copy && turbo dev",
+    "build": "npm run assets:copy && turbo build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.59.2",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.3.0",
+    "turbo": "^2.9.12"
+  }
+}

@@ -1,0 +1,7 @@
+[build]
+  base = "."
+  command = "npm install && npm run assets:copy && npx turbo build --filter=@ds/docs"
+  publish = "apps/docs/.next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
